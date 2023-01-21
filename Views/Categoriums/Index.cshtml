@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Practica2.Models.Categorium>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .table > tbody > tr:nth-child(3n+1) > td {
+        background-color: navajowhite;
+    }
+
+    .table > tbody > tr:nth-child(3n+2) > td {
+        background-color: #95D6F6;
+    }
+
+    .table > tbody > tr:nth-child(3n+3) > td {
+        background-color: #F69B95;
+
+    }
+
+    a {
+        color: #fff;
+    }
+    
+    a:hover{
+        color: #fff;
+    }
+
+    .registro{
+        color:#000;
+    }
+
+</style>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="registro">Nuevo registro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        
+        <tr class="table-warning" >
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                
+                <button type="button" class="btn btn-primary btn-sm"><a asp-action="Edit" asp-route-id="@item.IdCategoria"><i class="fa-solid fa-pen-to-square"></i> Editar</a></button>
+                <button type="button" class="btn btn-success btn-sm"><a asp-action="Details" asp-route-id="@item.IdCategoria"><i class="fa-solid fa-clipboard"></i> Detalles</a></button>
+                <button type="button" class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@item.IdCategoria"><i class="fa-solid fa-trash"></i> Eliminar</a></button>
+                
+            </td>
+        </tr>
+        
+}
+    </tbody>
+</table>
